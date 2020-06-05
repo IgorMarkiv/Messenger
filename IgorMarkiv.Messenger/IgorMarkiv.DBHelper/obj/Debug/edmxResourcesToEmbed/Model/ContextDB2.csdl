@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AmwayProductManagerHelperDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="AmwayProductManagerHelperDBModel.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="RegistrationTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="StartOrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CloseOrderDate" Type="DateTime" Precision="3" />
+    <Property Name="SummaryPrice" Type="Int32" Nullable="false" />
+    <Property Name="CurrentPayments" Type="Int32" Nullable="false" />
+    <Property Name="isClose" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductEditHistory">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="edytingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="productName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="productPrice" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="productCategory" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="productPV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Products" Relationship="AmwayProductManagerHelperDBModel.FK_ProductEditHistory_Products" FromRole="ProductEditHistory" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="category" Type="Int32" Nullable="false" />
+    <Property Name="PV" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProductEditHistory" Relationship="AmwayProductManagerHelperDBModel.FK_ProductEditHistory_Products" FromRole="Products" ToRole="ProductEditHistory" />
+    <NavigationProperty Name="Categories" Relationship="AmwayProductManagerHelperDBModel.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+  </EntityType>
+  <EntityContainer Name="AmwayProductManagerHelperDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Categories" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="ProductEditHistory" EntityType="Self.ProductEditHistory" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <EntitySet Name="Users" EntityType="AmwayProductManagerHelperDBModel.Users" />
+    <AssociationSet Name="FK_ProductEditHistory_Products" Association="AmwayProductManagerHelperDBModel.FK_ProductEditHistory_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductEditHistory" EntitySet="ProductEditHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Categories" Association="AmwayProductManagerHelperDBModel.FK_Products_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="login" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="role" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ProductEditHistory_Products">
+    <End Type="AmwayProductManagerHelperDBModel.Products" Role="Products" Multiplicity="1" />
+    <End Type="AmwayProductManagerHelperDBModel.ProductEditHistory" Role="ProductEditHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProductEditHistory">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Categories">
+    <End Type="AmwayProductManagerHelperDBModel.Categories" Role="Categories" Multiplicity="1" />
+    <End Type="AmwayProductManagerHelperDBModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

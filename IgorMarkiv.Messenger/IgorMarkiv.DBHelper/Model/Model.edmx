@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AmwayProductManagerHelperDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "AmwayProductManagerHelperDB.dbo.Categories" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "AmwayProductManagerHelperDB.dbo.Customer" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="RegistrationTime" Type="datetime" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "AmwayProductManagerHelperDB.dbo.Orders" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="StartOrderDate" Type="datetime" Nullable="false" />
+          <Property Name="CloseOrderDate" Type="datetime" />
+          <Property Name="SummaryPrice" Type="int" Nullable="false" />
+          <Property Name="CurrentPayments" Type="int" Nullable="false" />
+          <Property Name="isClose" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "AmwayProductManagerHelperDB.dbo.ProductEditHistory" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ProductEditHistory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="edytingDate" Type="datetime" Nullable="false" />
+          <Property Name="productName" Type="nchar" MaxLength="10" />
+          <Property Name="productPrice" Type="nchar" MaxLength="10" />
+          <Property Name="productCategory" Type="nchar" MaxLength="10" />
+          <Property Name="productPV" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "AmwayProductManagerHelperDB.dbo.Products" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="category" Type="int" Nullable="false" />
+          <Property Name="PV" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище AmwayProductManagerHelperDBModelContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Categories].[id] AS [id], 
+    [Categories].[name] AS [name]
+    FROM [dbo].[Categories] AS [Categories]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Customer" EntityType="Self.Customer" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Customer].[id] AS [id], 
+    [Customer].[name] AS [name], 
+    [Customer].[BirthDate] AS [BirthDate], 
+    [Customer].[RegistrationTime] AS [RegistrationTime]
+    FROM [dbo].[Customer] AS [Customer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Orders" EntityType="Self.Orders" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Orders].[id] AS [id], 
+    [Orders].[CustomerId] AS [CustomerId], 
+    [Orders].[StartOrderDate] AS [StartOrderDate], 
+    [Orders].[CloseOrderDate] AS [CloseOrderDate], 
+    [Orders].[SummaryPrice] AS [SummaryPrice], 
+    [Orders].[CurrentPayments] AS [CurrentPayments], 
+    [Orders].[isClose] AS [isClose]
+    FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProductEditHistory" EntityType="Self.ProductEditHistory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProductEditHistory].[id] AS [id], 
+    [ProductEditHistory].[edytingDate] AS [edytingDate], 
+    [ProductEditHistory].[productName] AS [productName], 
+    [ProductEditHistory].[productPrice] AS [productPrice], 
+    [ProductEditHistory].[productCategory] AS [productCategory], 
+    [ProductEditHistory].[productPV] AS [productPV]
+    FROM [dbo].[ProductEditHistory] AS [ProductEditHistory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Products" EntityType="Self.Products" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Products].[id] AS [id], 
+    [Products].[name] AS [name], 
+    [Products].[price] AS [price], 
+    [Products].[category] AS [category], 
+    [Products].[PV] AS [PV]
+    FROM [dbo].[Products] AS [Products]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AmwayProductManagerHelperDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="RegistrationTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="StartOrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CloseOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="SummaryPrice" Type="Int32" Nullable="false" />
+          <Property Name="CurrentPayments" Type="Int32" Nullable="false" />
+          <Property Name="isClose" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductEditHistory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="edytingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="productName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="productPrice" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="productCategory" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="productPV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="category" Type="Int32" Nullable="false" />
+          <Property Name="PV" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AmwayProductManagerHelperDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="ProductEditHistory" EntityType="Self.ProductEditHistory" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AmwayProductManagerHelperDBModelContainer" CdmEntityContainer="AmwayProductManagerHelperDBEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="RegistrationTime" ColumnName="RegistrationTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StartOrderDate" ColumnName="StartOrderDate" />
+                <ScalarProperty Name="CloseOrderDate" ColumnName="CloseOrderDate" />
+                <ScalarProperty Name="SummaryPrice" ColumnName="SummaryPrice" />
+                <ScalarProperty Name="CurrentPayments" ColumnName="CurrentPayments" />
+                <ScalarProperty Name="isClose" ColumnName="isClose" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductEditHistory">
+            <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.ProductEditHistory">
+              <MappingFragment StoreEntitySet="ProductEditHistory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="edytingDate" ColumnName="edytingDate" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="productPrice" ColumnName="productPrice" />
+                <ScalarProperty Name="productCategory" ColumnName="productCategory" />
+                <ScalarProperty Name="productPV" ColumnName="productPV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="PV" ColumnName="PV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

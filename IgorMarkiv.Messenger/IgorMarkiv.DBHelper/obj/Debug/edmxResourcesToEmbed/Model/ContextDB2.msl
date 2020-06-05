@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище AmwayProductManagerHelperDBModelContainer" CdmEntityContainer="AmwayProductManagerHelperDBEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="RegistrationTime" ColumnName="RegistrationTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="StartOrderDate" ColumnName="StartOrderDate" />
+          <ScalarProperty Name="CloseOrderDate" ColumnName="CloseOrderDate" />
+          <ScalarProperty Name="SummaryPrice" ColumnName="SummaryPrice" />
+          <ScalarProperty Name="CurrentPayments" ColumnName="CurrentPayments" />
+          <ScalarProperty Name="isClose" ColumnName="isClose" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductEditHistory">
+      <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.ProductEditHistory">
+        <MappingFragment StoreEntitySet="ProductEditHistory">
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="edytingDate" ColumnName="edytingDate" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="productPrice" ColumnName="productPrice" />
+          <ScalarProperty Name="productCategory" ColumnName="productCategory" />
+          <ScalarProperty Name="productPV" ColumnName="productPV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="PV" ColumnName="PV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="AmwayProductManagerHelperDBModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

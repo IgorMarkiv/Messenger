@@ -1,0 +1,13 @@
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Release\Helix.DBHelper.dll.config
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Release\Helix.DBHelper.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Release\Helix.DBHelper.pdb
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Release\EntityFramework.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Release\HELIX.ExceptionDLL.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Release\HELIX.LoginDLL.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Release\EntityFramework.xml
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\obj\Release\Helix.DBHelper.csprojAssemblyReference.cache
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\obj\Release\Helix.DBHelper.csproj.CopyComplete
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\obj\Release\Helix.DBHelper.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\obj\Release\Helix.DBHelper.pdb

@@ -1,0 +1,26 @@
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Debug\Helix.DBHelper.dll.config
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Debug\Helix.DBHelper.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Debug\Helix.DBHelper.pdb
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Debug\EntityFramework.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Debug\HELIX.ExceptionDLL.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Debug\HELIX.LoginDLL.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Debug\EntityFramework.xml
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\obj\Debug\Helix.DBHelper.csprojAssemblyReference.cache
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\obj\Debug\Helix.DBHelper.csproj.CopyComplete
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\obj\Debug\Helix.DBHelper.dll
+C:\Users\Igor Markiv\quiz-bhp\rep\Pratt BHP\Helix.DBHelper\obj\Debug\Helix.DBHelper.pdb
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\bin\Debug\Helix.DBHelper.dll.config
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\bin\Debug\Helix.DBHelper.dll
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\bin\Debug\Helix.DBHelper.pdb
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\bin\Debug\EntityFramework.dll
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\bin\Debug\EntityFramework.SqlServer.dll
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\bin\Debug\HELIX.ExceptionDLL.dll
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\bin\Debug\HELIX.LoginDLL.dll
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\bin\Debug\EntityFramework.xml
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\bin\Debug\EntityFramework.SqlServer.xml
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\obj\Debug\Helix.DBHelper.csprojAssemblyReference.cache
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\obj\Debug\Helix.DBHelper.csproj.CopyComplete
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\obj\Debug\Helix.DBHelper.dll
+E:\quiz-bhp-new\backup\rep\Pratt BHP\Helix.DBHelper\obj\Debug\Helix.DBHelper.pdb

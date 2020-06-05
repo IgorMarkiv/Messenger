@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище BHPGameDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Blacklist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="until" Type="datetime" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Game_detalis">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_game" Type="bigint" Nullable="false" />
+    <Property Name="id_stage" Type="int" Nullable="false" />
+    <Property Name="level" Type="int" Nullable="false" />
+    <Property Name="stage_answer_status" Type="bit" Nullable="false" />
+    <Property Name="spent_time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="stage_score" Type="int" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="start_date" Type="datetime" Nullable="false" />
+    <Property Name="game_lifetime" Type="datetime" Nullable="false" />
+    <Property Name="active_stage" Type="int" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="points" Type="int" Nullable="false" />
+    <Property Name="test_game" Type="bit" Nullable="false" />
+    <Property Name="spent_time" Type="int" Nullable="false" />
+    <Property Name="last_stage_generation_datetime" Type="datetime" />
+    <Property Name="game_session_key" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="last_activity" Type="datetime" Nullable="false" />
+    <Property Name="session_key" Type="nvarchar" MaxLength="255" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Settings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="value" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Stages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="correctAnswer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="incorrectAnswer1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="incorrectAnswer2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="incorrectAnswer3" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="level" Type="int" Nullable="false" />
+    <Property Name="times_answered" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="nvarchar" MaxLength="255" />
+    <Property Name="first_name" Type="nvarchar(max)" />
+    <Property Name="last_name" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="password" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="salt" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="is_admin" Type="bit" Nullable="false" />
+    <Property Name="invalid_logins" Type="int" Nullable="false" />
+    <Property Name="last_login_attempt" Type="datetime" />
+    <Property Name="ad" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Blacklist__user___45F365D3">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Blacklist" Type="Self.Blacklist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Blacklist">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sessions__user_i__47DBAE45">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище BHPGameDBModelContainer">
+    <EntitySet Name="Blacklist" EntityType="Self.Blacklist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Game_detalis" EntityType="Self.Game_detalis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stages" EntityType="Self.Stages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Blacklist__user___45F365D3" Association="Self.FK__Blacklist__user___45F365D3">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Blacklist" EntitySet="Blacklist" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sessions__user_i__47DBAE45" Association="Self.FK__Sessions__user_i__47DBAE45">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Sessions" EntitySet="Sessions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

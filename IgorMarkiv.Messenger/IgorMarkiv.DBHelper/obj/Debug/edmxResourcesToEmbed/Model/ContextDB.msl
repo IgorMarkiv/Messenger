@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище BHPGameDBModelContainer" CdmEntityContainer="ContextDB">
+    <EntitySetMapping Name="Blacklist">
+      <EntityTypeMapping TypeName="BHPGameDBModel.Blacklist">
+        <MappingFragment StoreEntitySet="Blacklist">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="until" ColumnName="until" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Game_detalis">
+      <EntityTypeMapping TypeName="BHPGameDBModel.Game_detalis">
+        <MappingFragment StoreEntitySet="Game_detalis">
+          <ScalarProperty Name="stage_score" ColumnName="stage_score" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_game" ColumnName="id_game" />
+          <ScalarProperty Name="id_stage" ColumnName="id_stage" />
+          <ScalarProperty Name="stage_answer_status" ColumnName="stage_answer_status" />
+          <ScalarProperty Name="spent_time" ColumnName="spent_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="BHPGameDBModel.Games">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="game_session_key" ColumnName="game_session_key" />
+          <ScalarProperty Name="last_stage_generation_datetime" ColumnName="last_stage_generation_datetime" />
+          <ScalarProperty Name="active_stage" ColumnName="active_stage" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="game_lifetime" ColumnName="game_lifetime" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="points" ColumnName="points" />
+          <ScalarProperty Name="test_game" ColumnName="test_game" />
+          <ScalarProperty Name="spent_time" ColumnName="spent_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="BHPGameDBModel.Sessions">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="last_activity" ColumnName="last_activity" />
+          <ScalarProperty Name="session_key" ColumnName="session_key" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="BHPGameDBModel.Settings">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stages">
+      <EntityTypeMapping TypeName="BHPGameDBModel.Stages">
+        <MappingFragment StoreEntitySet="Stages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="correctAnswer" ColumnName="correctAnswer" />
+          <ScalarProperty Name="incorrectAnswer1" ColumnName="incorrectAnswer1" />
+          <ScalarProperty Name="incorrectAnswer2" ColumnName="incorrectAnswer2" />
+          <ScalarProperty Name="incorrectAnswer3" ColumnName="incorrectAnswer3" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="times_answered" ColumnName="times_answered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BHPGameDBModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="is_admin" ColumnName="is_admin" />
+          <ScalarProperty Name="invalid_logins" ColumnName="invalid_logins" />
+          <ScalarProperty Name="last_login_attempt" ColumnName="last_login_attempt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
