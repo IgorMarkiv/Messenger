@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище IgorMarkivMessengerDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="time" Type="datetime" Nullable="false" />
+          <Property Name="changed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="msg_conv">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="int" Nullable="false" />
+          <Property Name="Sender" Type="int" Nullable="false" />
+          <Property Name="Reciever" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastLogin" Type="datetime" Nullable="false" />
+          <Property Name="invalidLogin" Type="int" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="salt" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_msg_conv_Message">
+          <End Role="Messages" Type="Self.Messages" Multiplicity="1" />
+          <End Role="msg_conv" Type="Self.msg_conv" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="msg_conv">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msg_conv_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="msg_conv" Type="Self.msg_conv" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="msg_conv">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msg_conv_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="msg_conv" Type="Self.msg_conv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="msg_conv">
+              <PropertyRef Name="Sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище IgorMarkivMessengerDBModelContainer">
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="msg_conv" EntityType="Self.msg_conv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_msg_conv_Message" Association="Self.FK_msg_conv_Message">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="msg_conv" EntitySet="msg_conv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msg_conv_Users" Association="Self.FK_msg_conv_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="msg_conv" EntitySet="msg_conv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msg_conv_Users1" Association="Self.FK_msg_conv_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="msg_conv" EntitySet="msg_conv" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IgorMarkivMessengerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="changed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="msg_conv" Relationship="Self.FK_msg_conv_Message" FromRole="Messages" ToRole="msg_conv" />
+        </EntityType>
+        <EntityType Name="msg_conv">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="Int32" Nullable="false" />
+          <Property Name="Sender" Type="Int32" Nullable="false" />
+          <Property Name="Reciever" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Messages" Relationship="Self.FK_msg_conv_Message" FromRole="msg_conv" ToRole="Messages" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_msg_conv_Users" FromRole="msg_conv" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK_msg_conv_Users1" FromRole="msg_conv" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastLogin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="invalidLogin" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="msg_conv" Relationship="Self.FK_msg_conv_Users" FromRole="Users" ToRole="msg_conv" />
+          <NavigationProperty Name="msg_conv1" Relationship="Self.FK_msg_conv_Users1" FromRole="Users" ToRole="msg_conv" />
+        </EntityType>
+        <Association Name="FK_msg_conv_Message">
+          <End Role="Messages" Type="Self.Messages" Multiplicity="1" />
+          <End Role="msg_conv" Type="Self.msg_conv" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="msg_conv">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msg_conv_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="msg_conv" Type="Self.msg_conv" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="msg_conv">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_msg_conv_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="msg_conv" Type="Self.msg_conv" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="msg_conv">
+              <PropertyRef Name="Sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IgorMarkivMessengerDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Messages" EntityType="Self.Messages" />
+          <EntitySet Name="msg_conv" EntityType="Self.msg_conv" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_msg_conv_Message" Association="Self.FK_msg_conv_Message">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="msg_conv" EntitySet="msg_conv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msg_conv_Users" Association="Self.FK_msg_conv_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="msg_conv" EntitySet="msg_conv" />
+          </AssociationSet>
+          <AssociationSet Name="FK_msg_conv_Users1" Association="Self.FK_msg_conv_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="msg_conv" EntitySet="msg_conv" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище IgorMarkivMessengerDBModelContainer" CdmEntityContainer="IgorMarkivMessengerDBEntities">
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="IgorMarkivMessengerDBModel.Messages">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="changed" ColumnName="changed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="msg_conv">
+            <EntityTypeMapping TypeName="IgorMarkivMessengerDBModel.msg_conv">
+              <MappingFragment StoreEntitySet="msg_conv">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="Reciever" ColumnName="Reciever" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="IgorMarkivMessengerDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
+                <ScalarProperty Name="invalidLogin" ColumnName="invalidLogin" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="salt" ColumnName="salt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

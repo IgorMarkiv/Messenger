@@ -55,7 +55,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB.cs" />
-    <Compile Include="Login.cs" />
+    <Compile Include="LoginManager.cs" />
+    <Compile Include="MessaageManager.cs" />
+    <Compile Include="Model\dbEntitiesContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbEntitiesContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dbEntitiesContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbEntitiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dbEntitiesContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbEntitiesContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Messages.cs">
+      <DependentUpon>dbEntitiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\msg_conv.cs">
+      <DependentUpon>dbEntitiesContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Users.cs">
+      <DependentUpon>dbEntitiesContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +88,13 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="App.config" />
+    <EntityDeploy Include="Model\dbEntitiesContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbEntitiesContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\dbEntitiesContext.edmx.diagram">
+      <DependentUpon>dbEntitiesContext.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.5.1.min.map" />
     <None Include="Scripts\jquery-3.5.1.slim.min.map" />
@@ -72,9 +104,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Engine\" />
-    <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Model\dbEntitiesContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbEntitiesContext.edmx</DependentUpon>
+      <LastGenOutput>dbEntitiesContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\dbEntitiesContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbEntitiesContext.edmx</DependentUpon>
+      <LastGenOutput>dbEntitiesContext.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />

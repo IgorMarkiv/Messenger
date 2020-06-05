@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище IgorMarkivMessengerDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="time" Type="datetime" Nullable="false" />
+    <Property Name="changed" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="msg_conv">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Message" Type="int" Nullable="false" />
+    <Property Name="Sender" Type="int" Nullable="false" />
+    <Property Name="Reciever" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="lastLogin" Type="datetime" Nullable="false" />
+    <Property Name="invalidLogin" Type="int" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="salt" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_msg_conv_Message">
+    <End Role="Messages" Type="Self.Messages" Multiplicity="1" />
+    <End Role="msg_conv" Type="Self.msg_conv" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Messages">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="msg_conv">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_msg_conv_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="msg_conv" Type="Self.msg_conv" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="msg_conv">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_msg_conv_Users1">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="msg_conv" Type="Self.msg_conv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="msg_conv">
+        <PropertyRef Name="Sender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище IgorMarkivMessengerDBModelContainer">
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="msg_conv" EntityType="Self.msg_conv" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_msg_conv_Message" Association="Self.FK_msg_conv_Message">
+      <End Role="Messages" EntitySet="Messages" />
+      <End Role="msg_conv" EntitySet="msg_conv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_msg_conv_Users" Association="Self.FK_msg_conv_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="msg_conv" EntitySet="msg_conv" />
+    </AssociationSet>
+    <AssociationSet Name="FK_msg_conv_Users1" Association="Self.FK_msg_conv_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="msg_conv" EntitySet="msg_conv" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

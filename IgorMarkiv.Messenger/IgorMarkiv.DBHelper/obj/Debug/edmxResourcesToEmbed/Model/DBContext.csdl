@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IgorMarkivMessengerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="time" Type="DateTime" Precision="3" />
+    <Property Name="changed" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="msg_conv">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Message" />
+      <PropertyRef Name="Sender" />
+      <PropertyRef Name="Reciever" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="Int32" Nullable="false" />
+    <Property Name="Sender" Type="Int32" Nullable="false" />
+    <Property Name="Reciever" Type="Int32" Nullable="false" />
+    <Property Name="Messege" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="user" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lastLogin" Type="DateTime" Precision="3" />
+    <Property Name="invalidLogin" Type="Int32" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="IgorMarkivMessengerDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Message" EntityType="Self.Message" />
+    <EntitySet Name="msg_conv" EntityType="Self.msg_conv" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+  </EntityContainer>
+</Schema>

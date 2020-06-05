@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,8 @@ namespace IgorMarkiv.Messanger
             // Код, выполняемый при запуске приложения
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            var db = new DB();
+            DBHelper.LoginManager.Init(db);
         }
     }
 }

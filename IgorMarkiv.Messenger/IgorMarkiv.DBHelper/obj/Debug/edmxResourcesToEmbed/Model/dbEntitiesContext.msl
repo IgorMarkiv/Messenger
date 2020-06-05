@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище IgorMarkivMessengerDBModelContainer" CdmEntityContainer="IgorMarkivMessengerDBEntities">
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="IgorMarkivMessengerDBModel.Messages">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="changed" ColumnName="changed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="msg_conv">
+      <EntityTypeMapping TypeName="IgorMarkivMessengerDBModel.msg_conv">
+        <MappingFragment StoreEntitySet="msg_conv">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Reciever" ColumnName="Reciever" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IgorMarkivMessengerDBModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user" ColumnName="user" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
+          <ScalarProperty Name="invalidLogin" ColumnName="invalidLogin" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
